@@ -5,7 +5,7 @@ import { viteSourceLocator } from '@metagptx/vite-plugin-source-locator';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/Wisdom-Wednesdays/',
+  base: mode === 'production' ? '/Wisdom-Wednesdays/' : '/',
   plugins: [
     viteSourceLocator({
       prefix: 'mgx',

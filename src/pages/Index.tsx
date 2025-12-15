@@ -128,7 +128,7 @@ export default function Index() {
               </p>
               <Button 
                 onClick={() => setShowWelcome(false)}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-pulse"
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-breathing"
               >
                 <Play className="mr-2 w-5 h-5" />
                 Start Game
@@ -257,13 +257,13 @@ export default function Index() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-white/10 p-4">
+        <div className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-2xl border-t border-white/20 p-4 shadow-2xl">
           <div className="flex items-center justify-between">
             <Button
               onClick={handlePrevLevel}
               disabled={currentLevel === 0}
               variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-30 animate-pulse"
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-30 animate-breathing"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Previous
@@ -275,7 +275,7 @@ export default function Index() {
                 <button
                   key={index}
                   onClick={() => handleLevelSelect(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 animate-pulse ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 animate-breathing ${
                     index === currentLevel
                       ? 'bg-white scale-125'
                       : completedLevels.includes(index)
@@ -289,7 +289,7 @@ export default function Index() {
             <Button
               onClick={handleNextLevel}
               disabled={currentLevel === levels.length - 1}
-              className={`bg-gradient-to-r ${currentLevelData.color} text-white hover:scale-105 disabled:opacity-30 transition-all duration-300 animate-pulse`}
+              className={`bg-gradient-to-r ${currentLevelData.color} text-white hover:scale-105 disabled:opacity-30 transition-all duration-300 animate-breathing`}
             >
               {currentLevel === levels.length - 1 ? 'Complete' : 'Next'}
               <ArrowRight className="w-4 h-4 ml-2" />
