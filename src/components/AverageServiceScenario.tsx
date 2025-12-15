@@ -51,8 +51,8 @@ export default function AverageServiceScenario() {
       customerThought: 'They know what they\'re doing. Professional enough.',
       customerMood: 'neutral',
       baristaAction: 'Makes drink competently, no interaction',
-      baristaIcon: '☕',
-      customerIcon: '😐',
+      baristaIcon: Coffee,
+      customerIcon: Users,
       efficiency: 'Competent'
     },
     {
@@ -62,7 +62,7 @@ export default function AverageServiceScenario() {
       customerThought: 'Got my coffee. It\'s exactly what I ordered.',
       customerMood: 'satisfied',
       baristaAction: 'Hands over drink, says "here you go"',
-      baristaIcon: '🤝',
+      baristaIcon: CheckCircle,
       customerIcon: Smile,
       efficiency: 'Complete'
     },
@@ -73,8 +73,8 @@ export default function AverageServiceScenario() {
       customerThought: 'Job done. Nothing memorable, but nothing wrong either.',
       customerMood: 'neutral',
       baristaAction: 'Moves to next task, transaction forgotten',
-      baristaIcon: '➡️',
-      customerIcon: '😐',
+      baristaIcon: Users,
+      customerIcon: Users,
       efficiency: 'Functional'
     }
   ];
@@ -208,14 +208,18 @@ export default function AverageServiceScenario() {
       <div className="grid grid-cols-2 gap-4 mb-4 animate-slide-in-left">
         {/* Barista Side */}
         <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="text-4xl mb-2 animate-bounce-in animate-pulse-soft">{currentStepData.baristaIcon}</div>
+          <div className="mb-2 flex justify-center animate-bounce-in">
+            <currentStepData.baristaIcon className="w-12 h-12 text-amber-600 animate-pulse-soft" />
+          </div>
           <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Barista</p>
           <p className="text-xs text-gray-600 animate-slide-in-up-delay">{currentStepData.baristaAction}</p>
         </div>
 
         {/* Customer Side */}
         <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="text-4xl mb-2 animate-bounce-in-delay animate-pulse-soft">{currentStepData.customerIcon}</div>
+          <div className="mb-2 flex justify-center animate-bounce-in-delay">
+            <currentStepData.customerIcon className="w-12 h-12 text-blue-600 animate-pulse-soft" />
+          </div>
           <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Customer</p>
           <div className="flex items-center justify-center gap-1 animate-slide-in-up-delay">
             <Meh className="w-3 h-3 text-gray-600 animate-pulse-soft" />

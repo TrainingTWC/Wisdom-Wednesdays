@@ -16,28 +16,28 @@ export default function MirrorEffectInteractive() {
     friendly: {
       title: 'Friendly & Welcoming',
       description: 'Warm smile, open body language, making eye contact',
-      staffIcon: Smile,
+      staffIcon: '😊',
       bgColor: 'bg-green-50 border-green-200',
       textColor: 'text-green-700'
     },
     professional: {
       title: 'Professional & Focused',
       description: 'Attentive, composed, business-like demeanor',
-      staffIcon: Meh,
+      staffIcon: '😐',
       bgColor: 'bg-blue-50 border-blue-200',
       textColor: 'text-blue-700'
     },
     rushed: {
       title: 'Rushed & Hurried',
       description: 'Quick movements, checking time, seems impatient',
-      staffIcon: Wind,
+      staffIcon: '😰',
       bgColor: 'bg-orange-50 border-orange-200',
       textColor: 'text-orange-700'
     },
     annoyed: {
       title: 'Annoyed & Frustrated',
       description: 'Frowning, sighing, showing irritation',
-      staffIcon: Angry,
+      staffIcon: '😤',
       bgColor: 'bg-red-50 border-red-200',
       textColor: 'text-red-700'
     }
@@ -47,74 +47,74 @@ export default function MirrorEffectInteractive() {
     warm: {
       title: 'Warm & Enthusiastic',
       description: 'Cheerful tone, varied pitch, engaging',
-      icon: Music
+      icon: '🎵'
     },
     polite: {
       title: 'Polite & Clear',
       description: 'Clear articulation, respectful tone',
-      icon: Volume2
+      icon: '🗣️'
     },
     monotone: {
       title: 'Flat & Monotone',
       description: 'Little variation, sounds disinterested',
-      icon: Minus
+      icon: '😑'
     },
     sharp: {
       title: 'Sharp & Curt',
       description: 'Brief responses, harsh tone',
-      icon: Zap
+      icon: '⚡'
     }
   };
 
   const combinedReactions = {
     'friendly_warm': { 
       mood: 'Customer lights up with genuine joy and feels completely welcomed', 
-      customerIcon: Heart,
+      customerIcon: '💖',
       impact: 'positive' 
     },
     'friendly_polite': { 
       mood: 'Customer feels respected and appreciated', 
-      customerIcon: Smile,
+      customerIcon: '😊',
       impact: 'positive' 
     },
     'professional_warm': { 
       mood: 'Customer appreciates the balance of professionalism and warmth', 
-      customerIcon: ThumbsUp,
+      customerIcon: '👍',
       impact: 'positive' 
     },
     'professional_polite': { 
       mood: 'Customer has a smooth, efficient service experience', 
-      customerIcon: CheckCircle,
+      customerIcon: '✅',
       impact: 'neutral' 
     },
     'rushed_sharp': { 
       mood: 'Customer feels unwelcome and stressed by the hostile service', 
-      customerIcon: AlertTriangle,
+      customerIcon: '⚠️',
       impact: 'negative' 
     },
     'annoyed_sharp': { 
       mood: 'Customer becomes defensive and wants to leave immediately', 
-      customerIcon: X,
+      customerIcon: '❌',
       impact: 'negative' 
     },
     'rushed_monotone': { 
       mood: 'Customer feels like just another number, unimportant', 
-      customerIcon: Frown,
+      customerIcon: '😞',
       impact: 'negative' 
     },
     'professional_monotone': { 
       mood: 'Customer finds the service cold and impersonal', 
-      customerIcon: Minus,
+      customerIcon: '😐',
       impact: 'neutral' 
     },
     'annoyed_polite': {
       mood: 'Customer detects the forced politeness and feels uncomfortable',
-      customerIcon: AlertCircle,
+      customerIcon: '😬',
       impact: 'negative'
     },
     'friendly_monotone': {
       mood: 'Customer is confused by the mixed signals',
-      customerIcon: HelpCircle, 
+      customerIcon: '🤔', 
       impact: 'neutral'
     }
   };
@@ -175,27 +175,19 @@ export default function MirrorEffectInteractive() {
 
   if (!hasStarted) {
     return (
-      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-blue-200 to-indigo-200 border-blue-300 flex items-center justify-center transition-all duration-500 hover:scale-105 shadow-lg animate-pulse">
-        <div className="text-center p-4 md:p-6 animate-bounce">
-          <div className="relative">
-            <Users className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4 mx-auto text-blue-600 animate-spin" style={{animationDuration: '3s'}} />
-            <div className="absolute inset-0 w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4 mx-auto bg-blue-400 rounded-full animate-ping opacity-20"></div>
+      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-blue-200 to-indigo-200 border-blue-300 flex items-center justify-center transition-all duration-300 hover:scale-[1.02] shadow-md">
+        <div className="text-center p-4 md:p-6">
+          <div className="text-5xl md:text-6xl mb-3 md:mb-4">
+            🎭
           </div>
-          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in">Practice your staff behavior - see how customers react!</p>
+          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2">Practice your staff behavior - see how customers react!</p>
           <Button 
             onClick={handleStart}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center gap-2 animate-bounce hover:animate-none font-bold"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2 font-semibold"
           >
-            <Smile className="w-4 h-4" />
-            🎮 Start Game!
+            😊 Start Practice!
           </Button>
-          <p className="text-xs text-gray-600 mt-2 animate-pulse">Choose different staff behaviors and tones</p>
-        </div>
-        <div className="absolute top-2 right-2 animate-spin text-yellow-400">
-          ⭐
-        </div>
-        <div className="absolute bottom-2 left-2 animate-bounce text-pink-400" style={{animationDelay: '0.5s'}}>
-          ✨
+          <p className="text-xs text-gray-600 mt-2">Choose different staff behaviors and tones</p>
         </div>
       </div>
     );
@@ -203,20 +195,17 @@ export default function MirrorEffectInteractive() {
 
   if (showResults) {
     return (
-      <div className="relative w-full min-h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-purple-200 via-pink-200 to-yellow-200 border-purple-300 p-6 shadow-2xl animate-wiggle">
+      <div className="relative w-full min-h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-purple-200 via-pink-200 to-yellow-200 border-purple-300 p-6 shadow-lg">
         <div className="text-center relative">
-          <div className="relative mb-4">
-            <BarChart3 className="w-16 h-16 mx-auto text-purple-600 animate-bounce" />
-            <div className="absolute inset-0 w-16 h-16 mx-auto bg-purple-400 rounded-full animate-ping opacity-30"></div>
-            <div className="absolute -top-2 -right-2 animate-spin text-yellow-400 text-2xl">🎉</div>
-            <div className="absolute -bottom-2 -left-2 animate-bounce text-green-400 text-xl">🌟</div>
+          <div className="text-5xl mb-4">
+            📊
           </div>
-          <h3 className="text-xl font-bold text-purple-800 mb-4 animate-pulse bg-gradient-to-r from-purple-800 to-pink-800 bg-clip-text text-transparent">🎊 Training Complete! 🎊</h3>
+          <h3 className="text-xl font-bold text-purple-800 mb-4">🎊 Training Complete! 🎊</h3>
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div className="animate-bounce text-yellow-400 absolute top-4 left-4">⭐</div>
-            <div className="animate-bounce text-pink-400 absolute top-8 right-8" style={{animationDelay: '0.3s'}}>💫</div>
-            <div className="animate-bounce text-green-400 absolute bottom-12 left-8" style={{animationDelay: '0.6s'}}>✨</div>
-            <div className="animate-bounce text-blue-400 absolute bottom-8 right-4" style={{animationDelay: '0.9s'}}>🎈</div>
+            <div className="text-yellow-400 absolute top-4 left-4">⭐</div>
+            <div className="text-pink-400 absolute top-8 right-8">💫</div>
+            <div className="text-green-400 absolute bottom-12 left-8">✨</div>
+            <div className="text-blue-400 absolute bottom-8 right-4">🎈</div>
           </div>
           
           <div className="bg-white/60 rounded-lg p-4 mb-4">
@@ -346,7 +335,7 @@ export default function MirrorEffectInteractive() {
                     : 'bg-white hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 text-gray-700 border hover:shadow-md hover:scale-102'
                 } px-3 py-2 text-xs text-left flex items-center gap-2 transition-all duration-300 transform hover:scale-105 rounded-lg`}
               >
-                <tone.icon className="w-5 h-5" />
+                <span className="text-xl">{tone.icon}</span>
                 <div>
                   <div className="font-medium">{tone.title}</div>
                   <div className="text-xs opacity-75">{tone.description}</div>
@@ -362,16 +351,14 @@ export default function MirrorEffectInteractive() {
         <div className="text-center relative">
           <div className="mb-4 flex justify-center relative">
             <div className="relative">
-              {currentReaction?.customerIcon ? 
-                <currentReaction.customerIcon className="w-20 h-20 text-gray-600 animate-bounce" /> : 
-                <Meh className="w-20 h-20 text-gray-600 animate-bounce" />
-              }
-              <div className="absolute inset-0 w-20 h-20 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full animate-ping"></div>
+              <div className="text-6xl">
+                {currentReaction?.customerIcon || '😐'}
+              </div>
               {currentReaction?.impact === 'positive' && (
-                <div className="absolute -top-2 -right-2 animate-spin text-yellow-400 text-xl">⭐</div>
+                <div className="absolute -top-2 -right-2 text-yellow-400 text-xl">⭐</div>
               )}
               {currentReaction?.impact === 'negative' && (
-                <div className="absolute -top-2 -right-2 animate-bounce text-red-400 text-lg">⚠️</div>
+                <div className="absolute -top-2 -right-2 text-red-400 text-lg">⚠️</div>
               )}
             </div>
           </div>
@@ -388,7 +375,7 @@ export default function MirrorEffectInteractive() {
             <div>
               <p className="text-xs text-gray-600 mb-1">Your Tone</p>
               <Badge className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 text-xs animate-pulse hover:animate-bounce transition-all duration-300 shadow-md">
-                <currentVoiceTone.icon className="w-3 h-3 inline mr-1 animate-pulse" /> {currentVoiceTone.title}
+                <span className="inline mr-1">{currentVoiceTone.icon}</span> {currentVoiceTone.title}
               </Badge>
             </div>
           </div>
