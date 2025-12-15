@@ -117,9 +117,9 @@ export default function AverageServiceScenario() {
 
   if (!hasStarted) {
     return (
-      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-amber-200 to-amber-400 border-amber-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-bounce-in">
+      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-amber-200 to-amber-400 border-amber-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-fade-in-scale">
         <div className="text-center p-4 md:p-6 animate-slide-in-up">
-          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-bounce-gentle">⚙️</div>
+          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-float">⚙️</div>
           <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in-delay">Experience functional but forgettable service</p>
           <Button 
             onClick={handleStart}
@@ -136,7 +136,7 @@ export default function AverageServiceScenario() {
     return (
       <div className="relative w-full min-h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-amber-100 to-amber-300 border-amber-300 p-4 md:p-6 animate-slide-in-up">
         <div className="text-center">
-          <div className="text-4xl mb-4 animate-bounce-gentle">📊</div>
+          <div className="text-4xl mb-4 animate-fade-in-scale">📊</div>
           <h3 className="text-lg font-bold text-amber-800 mb-4 animate-pop">Experience Impact</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -194,7 +194,7 @@ export default function AverageServiceScenario() {
       </div>
 
       {/* Step Counter */}
-      <div className="flex justify-between items-center mb-4 animate-bounce-gentle">
+      <div className="flex justify-between items-center mb-4 animate-slide-down">
         <Badge variant="outline" className="text-xs animate-pop">
           Step {currentStep + 1} of {steps.length}
         </Badge>
@@ -208,7 +208,7 @@ export default function AverageServiceScenario() {
       <div className="grid grid-cols-2 gap-4 mb-4 animate-slide-in-left">
         {/* Barista Side */}
         <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="mb-2 flex justify-center animate-bounce-in">
+          <div className="mb-2 flex justify-center animate-fade-in-scale">
             <currentStepData.baristaIcon className="w-12 h-12 text-amber-600 animate-pulse-soft" />
           </div>
           <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Barista</p>
@@ -217,7 +217,7 @@ export default function AverageServiceScenario() {
 
         {/* Customer Side */}
         <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="mb-2 flex justify-center animate-bounce-in-delay">
+          <div className="mb-2 flex justify-center animate-fade-in-scale">
             <currentStepData.customerIcon className="w-12 h-12 text-blue-600 animate-pulse-soft" />
           </div>
           <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Customer</p>
@@ -231,7 +231,7 @@ export default function AverageServiceScenario() {
       </div>
 
       {/* Step Title */}
-      <h3 className="font-bold text-sm md:text-base text-gray-800 mb-2 text-center animate-bounce-gentle">
+      <h3 className="font-bold text-sm md:text-base text-gray-800 mb-2 text-center animate-slide-up">
         {currentStepData.title}
       </h3>
 
@@ -250,7 +250,7 @@ export default function AverageServiceScenario() {
       </div>
 
       {/* Action Button */}
-      <div className="text-center animate-bounce-in-delay">
+      <div className="text-center animate-fade-in-scale">
         <Button 
           onClick={handleNext}
           className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-6 py-3 rounded-xl transform hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl animate-wiggle-on-hover"

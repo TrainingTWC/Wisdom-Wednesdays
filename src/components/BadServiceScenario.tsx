@@ -127,9 +127,9 @@ export default function BadServiceScenario() {
 
   if (!hasStarted) {
     return (
-      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-red-200 to-red-400 border-red-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-bounce-in">
+      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-red-200 to-red-400 border-red-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-fade-in-scale">
         <div className="text-center p-4 md:p-6 animate-slide-in-up">
-          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-bounce-gentle">🎭</div>
+          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-float">🎭</div>
           <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in-delay">Experience what bad service feels like from a customer's perspective</p>
           <Button 
             onClick={handleStart}
@@ -146,11 +146,11 @@ export default function BadServiceScenario() {
     return (
       <div className="relative w-full min-h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-red-100 to-red-300 border-red-300 p-4 md:p-6 animate-slide-in-up">
         <div className="text-center">
-          <div className="text-4xl mb-4 animate-bounce-gentle">📊</div>
+          <div className="text-4xl mb-4 animate-fade-in-scale">📊</div>
           <h3 className="text-lg font-bold text-red-800 mb-4 animate-pop">Experience Impact</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 animate-slide-in-left">
-            <Card className="bg-red-50 border-red-200 animate-bounce-in transform hover:scale-105 transition-all duration-300">
+            <Card className="bg-red-50 border-red-200 animate-fade-in-scale transform hover:scale-105 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl mb-2 animate-shake">😞</div>
                 <p className="font-semibold text-red-700 animate-fade-in-delay">Customer Mood</p>
@@ -158,7 +158,7 @@ export default function BadServiceScenario() {
               </CardContent>
             </Card>
             
-            <Card className="bg-red-50 border-red-200 animate-bounce-in-delay transform hover:scale-105 transition-all duration-300">
+            <Card className="bg-red-50 border-red-200 animate-stagger-delay-2 transform hover:scale-105 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl mb-2 animate-wiggle">❌</div>
                 <p className="font-semibold text-red-700 animate-fade-in-delay">Return Likelihood</p>
@@ -166,7 +166,7 @@ export default function BadServiceScenario() {
               </CardContent>
             </Card>
             
-            <Card className="bg-red-50 border-red-200 animate-bounce-in transform hover:scale-105 transition-all duration-300" style={{animationDelay: '0.4s'}}>
+            <Card className="bg-red-50 border-red-200 animate-stagger-delay-3 transform hover:scale-105 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <div className="text-2xl mb-2 animate-pulse-soft">🗣️</div>
                 <p className="font-semibold text-red-700 animate-fade-in-delay">Word of Mouth</p>
@@ -182,7 +182,7 @@ export default function BadServiceScenario() {
 
           <Button 
             onClick={handleRestart}
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl animate-bounce-gentle"
+            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <span className="animate-pulse-soft">Experience Again</span>
           </Button>
@@ -202,12 +202,12 @@ export default function BadServiceScenario() {
       </div>
 
       {/* Step Counter */}
-      <div className="flex justify-between items-center mb-4 animate-bounce-gentle">
-        <Badge variant="outline" className="text-xs animate-pop">
+      <div className="flex justify-between items-center mb-4 animate-slide-down">
+        <Badge variant="outline" className="text-xs animate-fade-in-scale">
           Step {currentStep + 1} of {steps.length}
         </Badge>
-        <div className="flex items-center gap-1 text-xs text-gray-600 animate-wiggle">
-          <Clock className="w-3 h-3 animate-spin-slow" />
+        <div className="flex items-center gap-1 text-xs text-gray-600 animate-fade-in-delay">
+          <Clock className="w-3 h-3" />
           <span>{currentStepData.waitTime}s waiting</span>
         </div>
       </div>
@@ -215,26 +215,26 @@ export default function BadServiceScenario() {
       {/* Scene */}
       <div className="grid grid-cols-2 gap-4 mb-4 animate-slide-in-left">
         {/* Barista Side */}
-        <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="mb-2 flex justify-center animate-bounce-in">
-            <currentStepData.baristaIcon className="w-12 h-12 text-red-600 animate-pulse-soft" />
+        <div className="text-center transform hover:scale-105 transition-transform duration-300">
+          <div className="mb-2 flex justify-center animate-fade-in-scale">
+            <currentStepData.baristaIcon className="w-12 h-12 text-red-600" />
           </div>
-          <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Barista</p>
-          <p className="text-xs text-gray-600 animate-slide-in-up-delay">{currentStepData.baristaAction}</p>
+          <p className="text-xs font-semibold text-gray-700 mb-1 animate-slide-up">Barista</p>
+          <p className="text-xs text-gray-600 animate-fade-in-delay">{currentStepData.baristaAction}</p>
         </div>
 
         {/* Customer Side */}
-        <div className="text-center transform hover:scale-110 transition-transform duration-300">
-          <div className="mb-2 flex justify-center animate-bounce-in-delay">
-            <currentStepData.customerIcon className="w-12 h-12 text-blue-600 animate-pulse-soft" />
+        <div className="text-center transform hover:scale-105 transition-transform duration-300">
+          <div className="mb-2 flex justify-center animate-fade-in-scale">
+            <currentStepData.customerIcon className="w-12 h-12 text-blue-600" />
           </div>
-          <p className="text-xs font-semibold text-gray-700 mb-1 animate-fade-in-delay">Customer</p>
-          <div className="flex items-center justify-center gap-1 animate-slide-in-up-delay">
+          <p className="text-xs font-semibold text-gray-700 mb-1 animate-slide-up">Customer</p>
+          <div className="flex items-center justify-center gap-1 animate-fade-in-delay">
             {customerMood === 'optimistic' || customerMood === 'neutral' ? 
-              <Eye className="w-3 h-3 text-green-600 animate-blink" /> : 
-              <EyeOff className="w-3 h-3 text-red-600 animate-shake" />
+              <Eye className="w-3 h-3 text-green-600" /> : 
+              <EyeOff className="w-3 h-3 text-red-600" />
             }
-            <span className={`text-xs ${moodColors[customerMood as keyof typeof moodColors]} animate-glow`}>
+            <span className={`text-xs ${moodColors[customerMood as keyof typeof moodColors]}`}>
               {customerMood}
             </span>
           </div>
@@ -242,7 +242,7 @@ export default function BadServiceScenario() {
       </div>
 
       {/* Step Title */}
-      <h3 className="font-bold text-sm md:text-base text-gray-800 mb-2 text-center animate-bounce-gentle">
+      <h3 className="font-bold text-sm md:text-base text-gray-800 mb-2 text-center animate-slide-up">
         {currentStepData.title}
       </h3>
 
@@ -252,21 +252,21 @@ export default function BadServiceScenario() {
       </p>
 
       {/* Customer Thought Bubble */}
-      <div className="bg-white/80 rounded-lg p-3 mb-4 border border-gray-300 relative animate-pop transform hover:scale-105 transition-transform duration-300">
+      <div className="bg-white/80 rounded-lg p-3 mb-4 border border-gray-300 relative animate-scale-in transform hover:scale-105 transition-transform duration-300">
         <div className="flex items-start gap-2">
-          <MessageCircle className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5 animate-pulse-soft" />
+          <MessageCircle className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-gray-700 italic animate-fade-in-delay">"{currentStepData.customerThought}"</p>
         </div>
         <div className="absolute -bottom-2 left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-white/80"></div>
       </div>
 
       {/* Action Button */}
-      <div className="text-center animate-bounce-in-delay">
+      <div className="text-center animate-fade-in-scale">
         <Button 
           onClick={handleNext}
-          className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl animate-wiggle-on-hover"
+          className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          <span className="animate-pulse-soft">
+          <span>
             {currentStep < steps.length - 1 ? 'Continue Experience' : 'See Impact'}
           </span>
         </Button>

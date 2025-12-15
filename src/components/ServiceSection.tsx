@@ -99,14 +99,14 @@ export default function ServiceSection({
   };
 
   return (
-    <Card ref={cardRef} className={`border bg-gradient-to-br ${colorClasses[colorScheme]} transition-all duration-300 hover:shadow-xl rounded-xl`}>
-      <CardHeader className="px-4 md:px-6 pt-4 md:pt-6">
+    <Card ref={cardRef} className={`border bg-gradient-to-br ${colorClasses[colorScheme]} transition-all duration-300 hover:shadow-xl rounded-xl animate-fade-in-scale`}>
+      <CardHeader className="px-4 md:px-6 pt-4 md:pt-6 animate-slide-down">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="flex-1">
-            <CardTitle className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{title}</CardTitle>
-            <CardDescription className="text-base md:text-lg font-semibold text-gray-700">{subtitle}</CardDescription>
+            <CardTitle className="text-xl md:text-2xl font-bold text-gray-900 mb-2 animate-stagger-delay-1">{title}</CardTitle>
+            <CardDescription className="text-base md:text-lg font-semibold text-gray-700 animate-stagger-delay-2">{subtitle}</CardDescription>
           </div>
-          <Badge className={`${badgeColors[colorScheme]} text-white shadow-sm self-start`}>
+          <Badge className={`${badgeColors[colorScheme]} text-white shadow-sm self-start animate-fade-in-scale`}>
             {colorScheme === 'cold' ? 'Bad' : colorScheme === 'neutral' ? 'Average' : colorScheme === 'warm' ? 'Excellent' : 'Reflection'}
           </Badge>
         </div>
@@ -116,12 +116,12 @@ export default function ServiceSection({
         {InteractiveComponent ? (
           <InteractiveComponent />
         ) : (
-          <div className={`relative w-full h-48 md:h-64 rounded-xl overflow-hidden border ${imageColors[colorScheme]} flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-sm`}>
+          <div className={`relative w-full h-48 md:h-64 rounded-xl overflow-hidden border ${imageColors[colorScheme]} flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-sm animate-scale-in`}>
             <div className="text-center p-4 md:p-6">
-              <div className="text-5xl md:text-6xl mb-3 md:mb-4">
+              <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-float">
                 {colorScheme === 'cold' ? '❄️' : colorScheme === 'neutral' ? '🤖' : colorScheme === 'warm' ? '☕' : '🪞'}
               </div>
-              <p className="text-xs md:text-sm text-gray-600 italic px-2">{imageDescription}</p>
+              <p className="text-xs md:text-sm text-gray-600 italic px-2 animate-fade-in-delay">{imageDescription}</p>
             </div>
           </div>
         )}
@@ -135,7 +135,7 @@ export default function ServiceSection({
         {/* Description - Three Separate Cards */}
         <div className="space-y-4">
           {descriptionSections.map((section, index) => (
-            <div key={index} className="bg-white/70 p-4 md:p-5 rounded-xl shadow-sm border border-white/40">
+            <div key={index} className={`bg-white/70 p-4 md:p-5 rounded-xl shadow-sm border border-white/40 animate-stagger-delay-${index + 3} transform hover:scale-[1.01] transition-transform duration-300`}>
               <p className="text-sm md:text-base text-gray-800 leading-relaxed">{section.trim()}</p>
             </div>
           ))}
@@ -157,34 +157,34 @@ export default function ServiceSection({
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative flex flex-col items-center gap-4">
-                <div className="text-5xl md:text-6xl animate-bounce-slow">💡</div>
-                <div className="text-center">
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                <div className="text-5xl md:text-6xl animate-float">💡</div>
+                <div className="text-center animate-fade-in-scale">
+                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-2 animate-slide-up">
                     Key Takeaway
                   </p>
-                  <p className="text-sm md:text-base text-gray-600 font-medium">
+                  <p className="text-sm md:text-base text-gray-600 font-medium animate-stagger-delay-2">
                     Tap to reveal the essential lesson
                   </p>
                 </div>
-                <ChevronDown className="w-8 h-8 text-gray-400 animate-bounce" />
+                <ChevronDown className="w-8 h-8 text-gray-400 animate-float" />
               </div>
             </button>
           ) : (
-            <div className={`relative overflow-hidden rounded-2xl border-4 shadow-2xl animate-in zoom-in-95 duration-500 ${takeawayBgColors[colorScheme]}`}>
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
+            <div className={`relative overflow-hidden rounded-2xl border-4 shadow-2xl animate-scale-in duration-700 ${takeawayBgColors[colorScheme]}`}>
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 animate-slide-down" />
               <div className="p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-4xl">🎯</div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Key Takeaway</h3>
+                <div className="flex items-center gap-3 mb-4 animate-slide-up">
+                  <div className="text-4xl animate-fade-in-scale">🎯</div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 animate-fade-in-scale">Key Takeaway</h3>
                 </div>
-                <div className="bg-white/60 backdrop-blur-sm p-5 md:p-6 rounded-xl shadow-inner border border-white/50">
-                  <p className="text-base md:text-lg text-gray-900 font-semibold leading-relaxed">{takeaway}</p>
+                <div className="bg-white/60 backdrop-blur-sm p-5 md:p-6 rounded-xl shadow-inner border border-white/50 animate-stagger-delay-3 transform hover:scale-[1.01] transition-transform duration-300">
+                  <p className="text-base md:text-lg text-gray-900 font-semibold leading-relaxed animate-fade-in-delay">{takeaway}</p>
                 </div>
                 <button
                   onClick={() => setShowTakeaway(false)}
-                  className="mt-4 flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200 mx-auto"
+                  className="mt-4 flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 mx-auto animate-stagger-delay-4 hover:scale-105"
                 >
-                  <ChevronUp className="w-5 h-5" />
+                  <ChevronUp className="w-5 h-5 animate-float" />
                   <span className="text-sm">Hide</span>
                 </button>
               </div>

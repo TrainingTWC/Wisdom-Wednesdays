@@ -140,15 +140,15 @@ export default function ExcellentServiceScenario() {
 
   if (!hasStarted) {
     return (
-      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-green-200 to-green-400 border-green-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-bounce-in">
-        <div className="text-center p-4 md:p-6 animate-slide-in-up">
-          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-bounce-gentle">✨</div>
-          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in-delay">Experience service that creates genuine connection</p>
+      <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-green-200 to-green-400 border-green-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-lg animate-fade-in-scale">
+        <div className="text-center p-4 md:p-6">
+          <div className="text-5xl md:text-6xl mb-3 md:mb-4 animate-float">✨</div>
+          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-slide-up">Experience service that creates genuine connection</p>
           <Button 
             onClick={handleStart}
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle"
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-stagger-delay-3"
           >
-            <span className="animate-pulse-soft">Start Experience</span>
+            <span className="animate-pulse">Start Experience</span>
           </Button>
         </div>
       </div>
@@ -159,7 +159,7 @@ export default function ExcellentServiceScenario() {
     return (
       <div className="relative w-full min-h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-green-100 to-green-300 border-green-300 p-4 md:p-6 animate-slide-in-up">
         <div className="text-center">
-          <div className="text-4xl mb-4 animate-bounce-gentle">🌟</div>
+          <div className="text-4xl mb-4 animate-fade-in-scale">🌟</div>
           <h3 className="text-lg font-bold text-green-800 mb-4 animate-pop">Experience Impact</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -215,7 +215,7 @@ export default function ExcellentServiceScenario() {
       </div>
 
       {/* Step Counter */}
-      <div className="flex justify-between items-center mb-4 animate-bounce-gentle">
+      <div className="flex justify-between items-center mb-4 animate-slide-down">
         <Badge variant="outline" className="text-xs animate-pop">
           Step {currentStep + 1} of {steps.length}
         </Badge>
