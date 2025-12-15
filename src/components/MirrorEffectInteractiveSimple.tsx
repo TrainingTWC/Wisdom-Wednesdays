@@ -258,21 +258,18 @@ export default function MirrorEffectInteractive() {
   const currentReaction = combinedReactions[`${staffMood}_${staffTone}` as keyof typeof combinedReactions];
 
   return (
-    <div className={`relative w-full min-h-80 rounded-xl overflow-hidden border transition-all duration-500 ${currentStaffMood.bgColor} p-4 md:p-6`}>
+    <div className={`relative w-full min-h-[400px] md:min-h-80 rounded-xl overflow-hidden border transition-all duration-500 ${currentStaffMood.bgColor} p-3 md:p-6`}>
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center gap-2">
-          <Badge variant="outline" className="text-xs flex items-center gap-1">
-            <User className="w-3 h-3" />
-            Staff Training
-          </Badge>
-        </div>
-        <div className="flex items-center gap-2">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
+        <Badge variant="outline" className="text-xs flex items-center gap-1 px-2 py-1">
+          👤 Staff Training
+        </Badge>
+        <div className="flex items-center gap-1">
           <Button
             onClick={showSummary}
             size="sm"
             variant="outline"
-            className="px-2 py-1 text-xs"
+            className="px-3 py-1.5 text-xs touch-manipulation"
           >
             Results
           </Button>
@@ -280,22 +277,22 @@ export default function MirrorEffectInteractive() {
             onClick={handleReset}
             size="sm"
             variant="outline"
-            className="px-2 py-1 text-xs"
+            className="px-2 py-1.5 text-xs touch-manipulation"
           >
-            <RotateCcw className="w-3 h-3" />
+            🔄
           </Button>
         </div>
       </div>
 
       {/* Staff Behavior Selection */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="space-y-4 mb-6">
         {/* Staff Mood Selection */}
-        <div className="bg-white/60 rounded-lg p-4 border border-white/40">
+        <div className="bg-white/70 rounded-lg p-3 md:p-4 border border-white/50">
           <div className="flex items-center gap-2 mb-3">
-            <User className="w-4 h-4" />
-            <p className="text-sm text-gray-800 font-medium">Staff Body Language</p>
+            <span className="text-lg">👤</span>
+            <p className="text-sm font-medium text-gray-800">Staff Body Language</p>
           </div>
-          <div className="grid grid-cols-1 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
             {Object.entries(staffMoods).map(([key, mood]) => (
               <Button
                 key={key}
@@ -303,14 +300,14 @@ export default function MirrorEffectInteractive() {
                 size="sm"
                 className={`${
                   staffMood === key 
-                    ? `${mood.bgColor} ${mood.textColor} border-2 animate-pulse shadow-lg scale-105` 
-                    : 'bg-white hover:bg-gray-50 text-gray-700 border hover:shadow-md hover:scale-102'
-                } px-3 py-2 text-xs text-left flex items-center gap-2 transition-all duration-300 transform hover:scale-105 rounded-lg`}
+                    ? `${mood.bgColor} ${mood.textColor} border-2 shadow-md` 
+                    : `bg-white hover:bg-gray-50 text-gray-700 border hover:shadow-md`
+                } px-2 py-3 md:px-3 md:py-2 text-xs flex flex-col md:flex-row items-center gap-2 transition-all duration-200 rounded-lg touch-manipulation min-h-[60px] md:min-h-auto`}
               >
-                <mood.staffIcon className="w-5 h-5" />
-                <div>
-                  <div className="font-medium">{mood.title}</div>
-                  <div className="text-xs opacity-75">{mood.description}</div>
+                <div className="text-xl md:text-base">{mood.staffIcon}</div>
+                <div className="text-center md:text-left">
+                  <div className="font-medium text-xs md:text-sm">{mood.title}</div>
+                  <div className="text-xs opacity-75 hidden md:block">{mood.description}</div>
                 </div>
               </Button>
             ))}
@@ -318,12 +315,12 @@ export default function MirrorEffectInteractive() {
         </div>
 
         {/* Voice Tone Selection */}
-        <div className="bg-white/60 rounded-lg p-4 border border-white/40">
+        <div className="bg-white/70 rounded-lg p-3 md:p-4 border border-white/50">
           <div className="flex items-center gap-2 mb-3">
-            <MessageCircle className="w-4 h-4" />
-            <p className="text-sm text-gray-800 font-medium">Voice Tone</p>
+            <span className="text-lg">💬</span>
+            <p className="text-sm font-medium text-gray-800">Voice Tone</p>
           </div>
-          <div className="grid grid-cols-1 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
             {Object.entries(voiceTones).map(([key, tone]) => (
               <Button
                 key={key}
@@ -331,14 +328,14 @@ export default function MirrorEffectInteractive() {
                 size="sm"
                 className={`${
                   staffTone === key 
-                    ? 'bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border-2 border-blue-300 animate-bounce shadow-lg scale-105' 
-                    : 'bg-white hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 text-gray-700 border hover:shadow-md hover:scale-102'
-                } px-3 py-2 text-xs text-left flex items-center gap-2 transition-all duration-300 transform hover:scale-105 rounded-lg`}
+                    ? 'bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border-2 border-blue-300 shadow-md' 
+                    : 'bg-white hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 text-gray-700 border hover:shadow-md'
+                } px-2 py-3 md:px-3 md:py-2 text-xs flex flex-col md:flex-row items-center gap-2 transition-all duration-200 rounded-lg touch-manipulation min-h-[60px] md:min-h-auto`}
               >
-                <span className="text-xl">{tone.icon}</span>
-                <div>
-                  <div className="font-medium">{tone.title}</div>
-                  <div className="text-xs opacity-75">{tone.description}</div>
+                <span className="text-xl md:text-lg">{tone.icon}</span>
+                <div className="text-center md:text-left">
+                  <div className="font-medium text-xs md:text-sm">{tone.title}</div>
+                  <div className="text-xs opacity-75 hidden md:block">{tone.description}</div>
                 </div>
               </Button>
             ))}
@@ -347,40 +344,42 @@ export default function MirrorEffectInteractive() {
       </div>
 
       {/* Customer Reaction Display */}
-      <div className="bg-gradient-to-br from-white/90 to-blue-50/90 rounded-xl p-6 border-2 border-white/60 shadow-xl animate-fade-in">
-        <div className="text-center relative">
-          <div className="mb-4 flex justify-center relative">
+      <div className="bg-gradient-to-br from-white/90 to-blue-50/90 rounded-xl p-4 md:p-6 border-2 border-white/60 shadow-lg">
+        <div className="text-center">
+          <div className="mb-3 flex justify-center relative">
             <div className="relative">
-              <div className="text-6xl">
+              <div className="text-4xl md:text-6xl">
                 {currentReaction?.customerIcon || '😐'}
               </div>
               {currentReaction?.impact === 'positive' && (
-                <div className="absolute -top-2 -right-2 text-yellow-400 text-xl">⭐</div>
+                <div className="absolute -top-1 -right-1 text-yellow-400 text-sm md:text-xl">⭐</div>
               )}
               {currentReaction?.impact === 'negative' && (
-                <div className="absolute -top-2 -right-2 text-red-400 text-lg">⚠️</div>
+                <div className="absolute -top-1 -right-1 text-red-400 text-sm md:text-lg">⚠️</div>
               )}
             </div>
           </div>
-          <p className="text-sm font-semibold text-gray-700 mb-2">Customer Response</p>
-          <p className="text-sm text-gray-600 mb-4">{customerReaction}</p>
+          <p className="text-xs md:text-sm font-semibold text-gray-700 mb-1 md:mb-2">Customer Response</p>
+          <p className="text-xs md:text-sm text-gray-600 mb-3 md:mb-4 px-2">{customerReaction}</p>
           
-          <div className="grid grid-cols-2 gap-4 text-center">
-            <div>
+          <div className="space-y-2 md:grid md:grid-cols-2 md:gap-4 md:space-y-0">
+            <div className="bg-white/50 rounded-lg p-2">
               <p className="text-xs text-gray-600 mb-1">Your Mood</p>
-              <Badge className={`${currentStaffMood.bgColor} ${currentStaffMood.textColor} text-xs animate-pulse hover:animate-bounce transition-all duration-300 shadow-md`}>
-                <currentStaffMood.staffIcon className="w-3 h-3 inline mr-1 animate-spin" style={{animationDuration: '2s'}} /> {currentStaffMood.title}
-              </Badge>
+              <div className="text-xs font-medium text-gray-800 flex items-center justify-center gap-1">
+                <span>{currentStaffMood.staffIcon}</span>
+                <span className="hidden sm:inline">{currentStaffMood.title}</span>
+              </div>
             </div>
-            <div>
+            <div className="bg-white/50 rounded-lg p-2">
               <p className="text-xs text-gray-600 mb-1">Your Tone</p>
-              <Badge className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 text-xs animate-pulse hover:animate-bounce transition-all duration-300 shadow-md">
-                <span className="inline mr-1">{currentVoiceTone.icon}</span> {currentVoiceTone.title}
-              </Badge>
+              <div className="text-xs font-medium text-gray-800 flex items-center justify-center gap-1">
+                <span>{currentVoiceTone.icon}</span>
+                <span className="hidden sm:inline">{currentVoiceTone.title}</span>
+              </div>
             </div>
           </div>
           
-          <div className="mt-4">
+          <div className="mt-3 md:mt-4">
             <p className="text-xs text-gray-600">
               <strong>Interactions:</strong> {interactionCount}
             </p>
