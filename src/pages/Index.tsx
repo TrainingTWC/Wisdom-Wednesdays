@@ -182,9 +182,9 @@ export default function Index() {
       </header>
 
       {/* Mobile Game Content */}
-      <main className="flex-1 overflow-hidden">
+      <main className="flex-1 overflow-hidden pb-24">
         {/* Current Level Card */}
-        <div className="p-4">
+        <div className="p-4 pb-8">
           <Card className={`${currentLevelData.bgColor} border-0 shadow-lg rounded-3xl overflow-hidden transform transition-all duration-500`}>
             <CardContent className="p-6">
               {/* Level Header */}
@@ -263,7 +263,7 @@ export default function Index() {
               onClick={handlePrevLevel}
               disabled={currentLevel === 0}
               variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-30"
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-30 animate-pulse"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Previous
@@ -275,7 +275,7 @@ export default function Index() {
                 <button
                   key={index}
                   onClick={() => handleLevelSelect(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 animate-pulse ${
                     index === currentLevel
                       ? 'bg-white scale-125'
                       : completedLevels.includes(index)
@@ -289,7 +289,7 @@ export default function Index() {
             <Button
               onClick={handleNextLevel}
               disabled={currentLevel === levels.length - 1}
-              className={`bg-gradient-to-r ${currentLevelData.color} text-white hover:scale-105 disabled:opacity-30 transition-all duration-300`}
+              className={`bg-gradient-to-r ${currentLevelData.color} text-white hover:scale-105 disabled:opacity-30 transition-all duration-300 animate-pulse`}
             >
               {currentLevel === levels.length - 1 ? 'Complete' : 'Next'}
               <ArrowRight className="w-4 h-4 ml-2" />

@@ -146,7 +146,7 @@ export default function ExcellentServiceScenario() {
           <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-slide-up">Experience service that creates genuine connection</p>
           <Button 
             onClick={handleStart}
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-stagger-delay-3"
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle animate-pulse"
           >
             <span className="animate-pulse">Start Experience</span>
           </Button>
@@ -195,7 +195,7 @@ export default function ExcellentServiceScenario() {
 
           <Button 
             onClick={handleRestart}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg animate-pulse"
           >
             Experience Again
           </Button>

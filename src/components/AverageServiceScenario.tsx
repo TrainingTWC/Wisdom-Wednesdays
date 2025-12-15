@@ -123,7 +123,7 @@ export default function AverageServiceScenario() {
           <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in-delay">Experience functional but forgettable service</p>
           <Button 
             onClick={handleStart}
-            className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle"
+            className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle animate-pulse"
           >
             <span className="animate-pulse-soft">Start Experience</span>
           </Button>
@@ -174,7 +174,7 @@ export default function AverageServiceScenario() {
 
           <Button 
             onClick={handleRestart}
-            className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg"
+            className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg animate-pulse"
           >
             Experience Again
           </Button>

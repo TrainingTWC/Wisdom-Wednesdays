@@ -245,7 +245,7 @@ export default function MirrorEffectInteractive() {
 
           <Button 
             onClick={handleReset}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 animate-pulse"
           >
             <RotateCcw className="w-4 h-4" />
             Try Again

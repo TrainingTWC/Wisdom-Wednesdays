@@ -133,7 +133,7 @@ export default function BadServiceScenario() {
           <p className="text-xs md:text-sm text-gray-700 mb-4 px-2 animate-fade-in-delay">Experience what bad service feels like from a customer's perspective</p>
           <Button 
             onClick={handleStart}
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle"
+            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-110 active:scale-95 transition-all duration-300 animate-wiggle animate-pulse"
           >
             <span className="animate-pulse-soft">Start Experience</span>
           </Button>
