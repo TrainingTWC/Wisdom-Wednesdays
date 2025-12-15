@@ -4,6 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import ServiceSection from '@/components/ServiceSection';
+import BadServiceScenario from '@/components/BadServiceScenario';
+import AverageServiceScenario from '@/components/AverageServiceScenario';
+import ExcellentServiceScenario from '@/components/ExcellentServiceScenario';
+import MirrorEffectInteractive from '@/components/MirrorEffectInteractiveSimple';
 import EmpathyAssessment from '@/components/EmpathyAssessment';
 import { Coffee, ArrowRight } from 'lucide-react';
 
@@ -306,6 +310,7 @@ export default function Index() {
               imageDescription="A customer standing at a counter, barista looking away, arms crossed. Cold colors (grey/blue) show emotional distance."
               quote="Bad service feels colder than COLD BREW."
               colorScheme="cold"
+              interactiveComponent={BadServiceScenario}
             />
             <div className="flex justify-end mt-6 md:mt-8">
               <Button 
@@ -327,6 +332,7 @@ export default function Index() {
               imageDescription="Split image: one side shows a barista handing a drink without smiling; the other side, an actual vending machine."
               caption="When service feels mechanical, people disconnect. Spot the difference!"
               colorScheme="neutral"
+              interactiveComponent={AverageServiceScenario}
             />
             <div className="flex justify-end mt-6 md:mt-8">
               <Button 
@@ -343,11 +349,12 @@ export default function Index() {
             <ServiceSection
               title="Excellent Service"
               subtitle="The Favorite Barista"
-              description={`Think of your favorite local shop where the owner knows your name, remembers your preferences, and greets you like an old friend. They ask about your day, make recommendations based on what they know you love, and genuinely care about your experience. It's not just a transaction — it's a relationship.\n\n\nSeen. Valued. Welcomed. You feel like you matter, like you're part of something special. You're not just another customer — you're appreciated.\n\n\nThis is where the magic happens in a café. The barista remembers your name and your usual order. They greet you with a genuine smile, maybe ask how your week's going. They make you feel like a friend, not a number. Customers don't just come back for the coffee — they come back because they feel connected. You're not serving drinks; you're building community.`}
+              description={`Think of your favorite local shop where the owner knows your name, remembers your preferences, and greets you like an old friend. They ask about your day, make recommendations based on what they know you love, and genuinely care about your experience. It's not just a transaction, it's a relationship.\n\n\nSeen. Valued. Welcomed. You feel like you matter, like you're part of something special. You're not just another customer, you're appreciated.\n\n\nThis is where the magic happens in a café. The barista remembers your name and your usual order. They greet you with a genuine smile, maybe ask how your week's going. They make you feel like a friend, not a number. Customers don't just come back for the coffee. They come back because they feel connected. You're not serving drinks; you're building community.`}
               takeaway="Excellent service turns routine into relationship. Connection, not caffeine, keeps people coming back."
               imageDescription="A smiling barista handing coffee to a happy regular. Warm colors, cozy lighting. Speech bubble with welcome message."
-              caption="Familiar faces, genuine warmth — that's excellent service."
+              caption="Familiar faces & genuine warmth. That's excellent service."
               colorScheme="warm"
+              interactiveComponent={ExcellentServiceScenario}
             />
             <div className="flex justify-end mt-6 md:mt-8">
               <Button 
@@ -369,7 +376,7 @@ export default function Index() {
                     <CardDescription className="text-base md:text-lg font-semibold text-gray-700">The Mirror Effect</CardDescription>
                   </div>
                   <Badge className="backdrop-blur-xl bg-purple-500/90 hover:bg-purple-600/90 text-white shadow-sm self-start border border-purple-400/30">
-                    Mirror Test
+                    Interactive
                   </Badge>
                 </div>
               </CardHeader>
@@ -384,158 +391,17 @@ export default function Index() {
                   </p>
                 </div>
 
-                {/* Negative Mirroring Examples */}
-                <div className="backdrop-blur-xl bg-white/40 p-4 md:p-5 rounded-2xl shadow-lg border border-white/30 space-y-4 hover:bg-white/50 transition-all duration-500">
-                  <h3 className="text-base md:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
-                    <span className="text-2xl">❌</span> When Staff Shows Negative Energy
-                  </h3>
-                  
-                  {/* Example 1: Facial Expression */}
-                  <div className="backdrop-blur-xl bg-red-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-red-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">😒</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Bored face, no smile, rolling eyes</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">😠</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer becomes cold, defensive, and irritated</p>
-                    </div>
-                  </div>
+                {/* Interactive Mirror Component */}
+                <MirrorEffectInteractive />
 
-                  {/* Example 2: Voice Tone */}
-                  <div className="backdrop-blur-xl bg-red-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-red-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">🗣️</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Flat, monotone voice, sounds annoyed</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">😤</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer becomes short, impatient, and rude</p>
-                    </div>
-                  </div>
-
-                  {/* Example 3: Body Language */}
-                  <div className="backdrop-blur-xl bg-red-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-red-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">🙅</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Crossed arms, turned away, avoiding eye contact</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">😞</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer withdraws, feels unwelcome, won't return</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Positive Mirroring Examples */}
-                <div className="backdrop-blur-xl bg-white/40 p-4 md:p-5 rounded-2xl shadow-lg border border-white/30 space-y-4 hover:bg-white/50 transition-all duration-500">
-                  <h3 className="text-base md:text-lg font-bold text-green-700 mb-3 flex items-center gap-2">
-                    <span className="text-2xl">✅</span> When Staff Shows Positive Energy
-                  </h3>
-                  
-                  {/* Example 1: Facial Expression */}
-                  <div className="backdrop-blur-xl bg-green-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-green-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">😊</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Warm smile, bright eyes, welcoming expression</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">😄</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer smiles back, opens up, feels valued</p>
-                    </div>
-                  </div>
-
-                  {/* Example 2: Voice Tone */}
-                  <div className="backdrop-blur-xl bg-green-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-green-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">🎵</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Friendly, upbeat tone, genuine enthusiasm</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">🤗</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer becomes friendly, talkative, and engaged</p>
-                    </div>
-                  </div>
-
-                  {/* Example 3: Body Language */}
-                  <div className="backdrop-blur-xl bg-green-400/20 p-3 md:p-4 rounded-xl border border-white/30 hover:bg-green-400/30 transition-all duration-500">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span className="text-3xl">🙋</span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">Barista: Open posture, leaning in, making eye contact</p>
-                        <p className="text-xs md:text-sm text-gray-700 mt-1">↓ Customer mirrors it:</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-12 md:ml-14">
-                      <span className="text-3xl">💝</span>
-                      <p className="text-sm md:text-base text-gray-800 font-medium">Customer relaxes, trusts you, becomes a regular</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Key Takeaway - Prominent Mirror Law */}
-                <div className="relative mt-8 mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 blur-2xl" />
-                  <div className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-50/90 to-pink-50/90 p-8 md:p-10 rounded-3xl border-4 border-purple-400/50 shadow-2xl hover:shadow-3xl hover:border-purple-500/70 transition-all duration-700">
-                    <div className="text-center mb-6">
-                      <div className="text-7xl md:text-8xl mb-4 animate-bounce-slow">🪞</div>
-                      <h3 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-purple-700 mb-4">
-                        The Mirror Law of Service
-                      </h3>
-                      <div className="w-24 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mb-6" />
-                    </div>
-                    
-                    <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-inner border-2 border-white/50 space-y-4">
-                      <p className="text-xl md:text-2xl font-bold text-gray-900 text-center leading-relaxed">
-                        <span className="text-purple-700">YOU</span> set the tone for every interaction.
-                      </p>
-                      <p className="text-lg md:text-xl text-gray-800 text-center leading-relaxed font-semibold">
-                        Your energy — positive or negative — is <span className="text-pink-600 font-bold">contagious</span>.
-                      </p>
-                      <p className="text-lg md:text-xl text-gray-900 text-center leading-relaxed font-bold">
-                        Customers don't just receive service, they <span className="text-purple-700 underline decoration-wavy decoration-purple-400">mirror the person delivering it</span>.
-                      </p>
-                    </div>
-
-                    <div className="mt-6 flex justify-center gap-2">
-                      <span className="inline-block w-3 h-3 rounded-full bg-purple-500 animate-pulse" />
-                      <span className="inline-block w-3 h-3 rounded-full bg-pink-500 animate-pulse animation-delay-200" />
-                      <span className="inline-block w-3 h-3 rounded-full bg-purple-500 animate-pulse animation-delay-400" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quote */}
-                <div className="backdrop-blur-xl bg-purple-400/20 p-6 md:p-8 rounded-2xl border-2 border-purple-300/50 shadow-xl hover:bg-purple-400/30 transition-all duration-500">
-                  <div className="text-5xl md:text-6xl mb-4 text-center">💭</div>
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 italic text-center leading-relaxed">
-                    "A smile invites a smile. A frown invites a frown. <br className="hidden md:block" />
-                    <span className="text-purple-700">You are the mirror they reflect.</span>"
-                  </p>
-                </div>
               </CardContent>
             </Card>
-            <div className="flex justify-end mt-8 md:mt-10">
+            <div className="flex justify-end mt-6 md:mt-8">
               <Button 
                 onClick={handleNext}
-                className="group bg-gradient-to-r from-pink-500 via-purple-600 to-pink-600 hover:from-pink-600 hover:via-purple-700 hover:to-pink-700 text-white px-8 md:px-10 py-6 md:py-7 text-base md:text-lg shadow-2xl shadow-pink-500/30 rounded-2xl transition-all duration-700 min-h-[44px] w-full sm:w-auto transform hover:scale-105 hover:shadow-3xl hover:shadow-pink-500/40 font-semibold"
+                className="group bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 md:px-8 py-5 md:py-6 rounded-2xl shadow-xl shadow-amber-500/20 transition-all duration-700 min-h-[44px] w-full sm:w-auto transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/30 font-semibold"
               >
-                Take Empathy Assessment <ArrowRight className="ml-2 w-5 h-5 md:w-6 md:h-6 transition-transform duration-500 group-hover:translate-x-1" />
+                Next Section <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
               </Button>
             </div>
           </TabsContent>

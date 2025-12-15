@@ -12,6 +12,7 @@ interface ServiceSectionProps {
   quote?: string;
   caption?: string;
   colorScheme: 'cold' | 'neutral' | 'warm' | 'mirror';
+  interactiveComponent?: React.ComponentType;
 }
 
 export default function ServiceSection({
@@ -23,6 +24,7 @@ export default function ServiceSection({
   quote,
   caption,
   colorScheme,
+  interactiveComponent: InteractiveComponent,
 }: ServiceSectionProps) {
   const [showTakeaway, setShowTakeaway] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -110,15 +112,19 @@ export default function ServiceSection({
         </div>
       </CardHeader>
       <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6 pb-4 md:pb-6">
-        {/* Image Placeholder */}
-        <div className={`relative w-full h-48 md:h-64 rounded-xl overflow-hidden border ${imageColors[colorScheme]} flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-sm`}>
-          <div className="text-center p-4 md:p-6">
-            <div className="text-5xl md:text-6xl mb-3 md:mb-4">
-              {colorScheme === 'cold' ? '❄️' : colorScheme === 'neutral' ? '🤖' : colorScheme === 'warm' ? '☕' : '🪞'}
+        {/* Image Placeholder or Interactive Component */}
+        {InteractiveComponent ? (
+          <InteractiveComponent />
+        ) : (
+          <div className={`relative w-full h-48 md:h-64 rounded-xl overflow-hidden border ${imageColors[colorScheme]} flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-sm`}>
+            <div className="text-center p-4 md:p-6">
+              <div className="text-5xl md:text-6xl mb-3 md:mb-4">
+                {colorScheme === 'cold' ? '❄️' : colorScheme === 'neutral' ? '🤖' : colorScheme === 'warm' ? '☕' : '🪞'}
+              </div>
+              <p className="text-xs md:text-sm text-gray-600 italic px-2">{imageDescription}</p>
             </div>
-            <p className="text-xs md:text-sm text-gray-600 italic px-2">{imageDescription}</p>
           </div>
-        </div>
+        )}
 
         {caption && (
           <p className="text-center text-xs md:text-sm font-medium text-gray-700 italic bg-white/50 p-3 rounded-xl">
