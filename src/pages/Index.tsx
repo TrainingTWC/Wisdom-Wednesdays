@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import BadServiceScenario from '@/components/BadServiceScenario';
@@ -6,13 +6,16 @@ import AverageServiceScenario from '@/components/AverageServiceScenario';
 import ExcellentServiceScenario from '@/components/ExcellentServiceScenario';
 import MirrorEffectInteractive from '@/components/MirrorEffectInteractiveSimple';
 import EmpathyAssessment from '@/components/EmpathyAssessment';
-import { ArrowRight, ArrowLeft, Trophy, Star, Play, CheckCircle } from 'lucide-react';
+import GameTutorial from '@/components/GameTutorial';
+import { ArrowRight, ArrowLeft, Trophy, Star, Play, CheckCircle, HelpCircle } from 'lucide-react';
 
 export default function Index() {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [completedLevels, setCompletedLevels] = useState<number[]>([]);
   const [totalScore, setTotalScore] = useState(0);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [hasSeenTutorial, setHasSeenTutorial] = useState(false);
 
   const levels = [
     { 
@@ -94,6 +97,22 @@ export default function Index() {
     setCurrentLevel(index);
   };
 
+  const handleTutorialComplete = () => {
+    setShowTutorial(false);
+    setHasSeenTutorial(true);
+    setShowWelcome(false);
+    // Save tutorial completion status
+    localStorage.setItem('hasSeenTutorial', 'true');
+  };
+
+  // Load tutorial status on component mount
+  useEffect(() => {
+    const tutorialSeen = localStorage.getItem('hasSeenTutorial');
+    if (tutorialSeen === 'true') {
+      setHasSeenTutorial(true);
+    }
+  }, []);
+
   const getActiveColorClass = (color: string) => {
     switch (color) {
       case 'red':
@@ -126,13 +145,32 @@ export default function Index() {
               <p className="text-gray-600 leading-relaxed">
                 Master the art of excellent customer service through interactive levels and challenges!
               </p>
-              <Button 
-                onClick={() => setShowWelcome(false)}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-breathing"
-              >
-                <Play className="mr-2 w-5 h-5" />
-                Start Game
-              </Button>
+              <div className="space-y-3">
+                <Button 
+                  onClick={() => {
+                    if (!hasSeenTutorial) {
+                      setShowTutorial(true);
+                    } else {
+                      setShowWelcome(false);
+                    }
+                  }}
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-breathing"
+                >
+                  <Play className="mr-2 w-5 h-5" />
+                  {hasSeenTutorial ? 'Start Game' : 'Start with Tutorial'}
+                </Button>
+                
+                {hasSeenTutorial && (
+                  <Button 
+                    onClick={() => setShowTutorial(true)}
+                    variant="outline"
+                    className="w-full border-purple-300 text-purple-200 hover:bg-purple-800/30 py-3 rounded-xl"
+                  >
+                    <HelpCircle className="mr-2 w-4 h-4" />
+                    Show Tutorial Again
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -297,6 +335,14 @@ export default function Index() {
           </div>
         </div>
       </main>
+
+      {/* Tutorial Modal */}
+      {showTutorial && (
+        <GameTutorial
+          onComplete={handleTutorialComplete}
+          onClose={() => setShowTutorial(false)}
+        />
+      )}
     </div>
   );
 }
