@@ -400,6 +400,18 @@ export default function MirrorEffectInteractive({ onNextLevel }: MirrorEffectInt
           </div>
         </div>
       </div>
+
+      {/* Next Level Button */}
+      {onNextLevel && (
+        <div className="mt-4 flex justify-center">
+          <Button 
+            onClick={onNextLevel}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl flex items-center gap-2 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Next Level <ArrowRight className="w-4 h-4" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
