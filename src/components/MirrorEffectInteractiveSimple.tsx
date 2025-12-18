@@ -2,9 +2,13 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Smile, RotateCcw, User, MessageCircle, Meh, Wind, Angry, Music, Volume2, Minus, Zap, Heart, AlertTriangle, X, Frown, Users, BarChart3, Star, ThumbsUp, CheckCircle, AlertCircle, HelpCircle } from 'lucide-react';
+import { Smile, RotateCcw, User, MessageCircle, Meh, Wind, Angry, Music, Volume2, Minus, Zap, Heart, AlertTriangle, X, Frown, Users, BarChart3, Star, ThumbsUp, CheckCircle, AlertCircle, HelpCircle, ArrowRight } from 'lucide-react';
 
-export default function MirrorEffectInteractive() {
+interface MirrorEffectInteractiveProps {
+  onNextLevel?: () => void;
+}
+
+export default function MirrorEffectInteractive({ onNextLevel }: MirrorEffectInteractiveProps = {}) {
   const [hasStarted, setHasStarted] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [staffMood, setStaffMood] = useState('professional');
@@ -243,13 +247,23 @@ export default function MirrorEffectInteractive() {
             </Card>
           </div>
 
-          <Button 
-            onClick={handleReset}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 animate-breathing"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Try Again
-          </Button>
+          <div className="flex gap-3 justify-center">
+            <Button 
+              onClick={handleReset}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 animate-breathing"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Try Again
+            </Button>
+            {onNextLevel && (
+              <Button 
+                onClick={onNextLevel}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl flex items-center gap-2 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Next Level <ArrowRight className="w-4 h-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     );

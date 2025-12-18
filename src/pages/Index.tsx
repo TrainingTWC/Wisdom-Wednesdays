@@ -248,7 +248,7 @@ export default function Index() {
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Mirror Challenge</h3>
                       <p className="text-gray-700">Practice your service attitude</p>
                     </div>
-                    <MirrorEffectInteractive />
+                    <MirrorEffectInteractive onNextLevel={handleNextLevel} />
                   </div>
                 )}
 
