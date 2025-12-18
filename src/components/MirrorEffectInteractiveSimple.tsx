@@ -157,7 +157,7 @@ export default function MirrorEffectInteractive() {
   const handleStart = () => {
     setHasStarted(true);
     setShowResults(false);
-    updateCustomerReaction(staffMood, staffTone);
+    updateCustomerReaction(partnerMood, partnerTone);
   };
 
   const handleReset = () => {
