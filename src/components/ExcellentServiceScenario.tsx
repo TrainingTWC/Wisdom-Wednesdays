@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Heart, MessageCircle, Star, Smile, Coffee, Users, Gift, ThumbsUp, CheckCircle } from 'lucide-react';
+import { Heart, MessageCircle, Star, Smile, Coffee, Users, Gift, ThumbsUp, CheckCircle, ArrowRight } from 'lucide-react';
 
-export default function ExcellentServiceScenario() {
+interface ExcellentServiceScenarioProps {
+  onNextLevel?: () => void;
+}
+
+export default function ExcellentServiceScenario({ onNextLevel }: ExcellentServiceScenarioProps = {}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [customerMood, setCustomerMood] = useState('neutral');
   const [hasStarted, setHasStarted] = useState(false);
@@ -193,12 +197,22 @@ export default function ExcellentServiceScenario() {
             <p className="text-sm text-green-700">Excellent service transforms transactions into relationships. Connection, not just caffeine, creates loyalty.</p>
           </div>
 
-          <Button 
-            onClick={handleRestart}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg animate-pulse"
-          >
-            Experience Again
-          </Button>
+          <div className="flex gap-3 justify-center">
+            <Button 
+              onClick={handleRestart}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+            >
+              Experience Again
+            </Button>
+            {onNextLevel && (
+              <Button 
+                onClick={onNextLevel}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+              >
+                Next Level <ArrowRight className="w-4 h-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -258,12 +272,17 @@ export default function ExcellentServiceScenario() {
       </p>
 
       {/* Customer Thought Bubble */}
-      <div className="bg-white/90 rounded-lg p-3 mb-4 border border-green-300 relative shadow-sm">
-        <div className="flex items-start gap-2">
-          <MessageCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-          <p className="text-xs text-gray-700 italic">"{currentStepData.customerThought}"</p>
+      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 mb-4 border-2 border-green-400 relative shadow-lg transform hover:scale-[1.02] transition-all duration-300">
+        <div className="flex items-start gap-3">
+          <div className="p-1 bg-green-500 rounded-full">
+            <MessageCircle className="w-5 h-5 text-white flex-shrink-0" />
+          </div>
+          <div>
+            <p className="text-sm text-green-600 font-bold mb-1">Customer thinks:</p>
+            <p className="text-sm font-semibold text-green-800 italic leading-relaxed">"{currentStepData.customerThought}"</p>
+          </div>
         </div>
-        <div className="absolute -bottom-2 left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-white/90"></div>
+        <div className="absolute -bottom-3 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-green-100"></div>
       </div>
 
       {/* Action Button */}

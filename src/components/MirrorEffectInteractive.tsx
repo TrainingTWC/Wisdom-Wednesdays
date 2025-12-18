@@ -959,15 +959,15 @@ export default function MirrorEffectInteractive() {
       <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden border bg-gradient-to-br from-blue-200 to-indigo-200 border-blue-300 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] shadow-sm">
         <div className="text-center p-4 md:p-6">
           <div className="text-5xl md:text-6xl mb-3 md:mb-4">🎭</div>
-          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2">Practice your staff behavior - see how customers react!</p>
+          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2">Practice your partner behavior - see how customers react!</p>
           <Button 
             onClick={handleStart}
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
             <Smile className="w-4 h-4" />
-            Start Staff Training
+            Start Partner Training
           </Button>
-          <p className="text-xs text-gray-600 mt-2">Choose different staff behaviors and tones</p>
+          <p className="text-xs text-gray-600 mt-2">Choose different partner behaviors and tones</p>
         </div>
       </div>
     );
@@ -1190,7 +1190,7 @@ export default function MirrorEffectInteractive() {
               </div>
             )}
           </div>
-          <p className="text-xs font-semibold text-gray-700 mb-1">Your Expression (Staff)</p>
+          <p className="text-xs font-semibold text-gray-700 mb-1">Your Expression (Partner)</p>
           <p className="text-xs text-gray-600">{currentExpressionData.description}</p>
         </div>
 
@@ -1350,14 +1350,14 @@ export default function MirrorEffectInteractive() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
             <div className="flex items-center gap-2 mb-1">
               <Volume2 className="w-3 h-3 text-blue-600" />
-              <span className="text-xs font-medium text-blue-700">Staff says:</span>
+              <span className="text-xs font-medium text-blue-700">Partner says:</span>
             </div>
             <p className="text-sm text-blue-800 italic">"{currentDialogue}"</p>
           </div>
         )}
         
         <div className="text-xs text-gray-600 space-y-1">
-          <p>Click a tone button to hear staff dialogue, then speak your response for AI tone analysis</p>
+          <p>Click a tone button to hear partner dialogue, then speak your response for AI tone analysis</p>
           {modelsLoaded ? (
             <p className="text-green-600 flex items-center gap-1">
               🤖 <span>Enhanced AI sentiment detection active</span>

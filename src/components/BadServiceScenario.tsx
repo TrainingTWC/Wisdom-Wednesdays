@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, MessageCircle, Eye, EyeOff, Smartphone, Smile, Frown, AlertTriangle, X, Coffee, Users, RotateCcw } from 'lucide-react';
+import { Clock, MessageCircle, Eye, EyeOff, Smartphone, Smile, Frown, AlertTriangle, X, Coffee, Users, RotateCcw, ArrowRight } from 'lucide-react';
 
-export default function BadServiceScenario() {
+interface BadServiceScenarioProps {
+  onNextLevel?: () => void;
+}
+
+export default function BadServiceScenario({ onNextLevel }: BadServiceScenarioProps = {}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [customerMood, setCustomerMood] = useState('neutral');
   const [hasStarted, setHasStarted] = useState(false);
@@ -180,12 +184,22 @@ export default function BadServiceScenario() {
             <p className="text-sm text-red-700 animate-slide-in-up-delay">Bad service isn't just about what you don't do - it's about making customers feel unseen and unimportant.</p>
           </div>
 
-          <Button 
-            onClick={handleRestart}
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <span className="animate-pulse-soft">Experience Again</span>
-          </Button>
+          <div className="flex gap-3 justify-center">
+            <Button 
+              onClick={handleRestart}
+              className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-6 py-3 rounded-xl transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <span>Experience Again</span>
+            </Button>
+            {onNextLevel && (
+              <Button 
+                onClick={onNextLevel}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl flex items-center gap-2 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Next Level <ArrowRight className="w-4 h-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -252,12 +266,17 @@ export default function BadServiceScenario() {
       </p>
 
       {/* Customer Thought Bubble */}
-      <div className="bg-white/80 rounded-lg p-3 mb-4 border border-gray-300 relative animate-scale-in transform hover:scale-105 transition-transform duration-300">
-        <div className="flex items-start gap-2">
-          <MessageCircle className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
-          <p className="text-xs text-gray-700 italic animate-fade-in-delay">"{currentStepData.customerThought}"</p>
+      <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-4 mb-4 border-2 border-red-400 relative animate-scale-in transform hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <div className="flex items-start gap-3">
+          <div className="p-1 bg-red-500 rounded-full">
+            <MessageCircle className="w-5 h-5 text-white flex-shrink-0" />
+          </div>
+          <div>
+            <p className="text-sm text-red-600 font-bold mb-1">Customer thinks:</p>
+            <p className="text-sm font-semibold text-red-800 italic leading-relaxed animate-fade-in-delay">"{currentStepData.customerThought}"</p>
+          </div>
         </div>
-        <div className="absolute -bottom-2 left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-white/80"></div>
+        <div className="absolute -bottom-3 left-6 w-0 h-0 border-l-6 border-r-6 border-t-6 border-l-transparent border-r-transparent border-t-red-100"></div>
       </div>
 
       {/* Action Button */}

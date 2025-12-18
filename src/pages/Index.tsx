@@ -6,7 +6,6 @@ import AverageServiceScenario from '@/components/AverageServiceScenario';
 import ExcellentServiceScenario from '@/components/ExcellentServiceScenario';
 import MirrorEffectInteractive from '@/components/MirrorEffectInteractiveSimple';
 import EmpathyAssessment from '@/components/EmpathyAssessment';
-import GameTutorial from '@/components/GameTutorial';
 import { ArrowRight, ArrowLeft, Trophy, Star, Play, CheckCircle, HelpCircle } from 'lucide-react';
 
 export default function Index() {
@@ -14,8 +13,6 @@ export default function Index() {
   const [completedLevels, setCompletedLevels] = useState<number[]>([]);
   const [totalScore, setTotalScore] = useState(0);
   const [showWelcome, setShowWelcome] = useState(true);
-  const [showTutorial, setShowTutorial] = useState(false);
-  const [hasSeenTutorial, setHasSeenTutorial] = useState(false);
 
   const levels = [
     { 
@@ -97,22 +94,6 @@ export default function Index() {
     setCurrentLevel(index);
   };
 
-  const handleTutorialComplete = () => {
-    setShowTutorial(false);
-    setHasSeenTutorial(true);
-    setShowWelcome(false);
-    // Save tutorial completion status
-    localStorage.setItem('hasSeenTutorial', 'true');
-  };
-
-  // Load tutorial status on component mount
-  useEffect(() => {
-    const tutorialSeen = localStorage.getItem('hasSeenTutorial');
-    if (tutorialSeen === 'true') {
-      setHasSeenTutorial(true);
-    }
-  }, []);
-
   const getActiveColorClass = (color: string) => {
     switch (color) {
       case 'red':
@@ -147,29 +128,12 @@ export default function Index() {
               </p>
               <div className="space-y-3">
                 <Button 
-                  onClick={() => {
-                    if (!hasSeenTutorial) {
-                      setShowTutorial(true);
-                    } else {
-                      setShowWelcome(false);
-                    }
-                  }}
+                  onClick={() => setShowWelcome(false)}
                   className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-breathing"
                 >
                   <Play className="mr-2 w-5 h-5" />
-                  {hasSeenTutorial ? 'Start Game' : 'Start with Tutorial'}
+                  Start Game
                 </Button>
-                
-                {hasSeenTutorial && (
-                  <Button 
-                    onClick={() => setShowTutorial(true)}
-                    variant="outline"
-                    className="w-full border-purple-300 text-purple-200 hover:bg-purple-800/30 py-3 rounded-xl"
-                  >
-                    <HelpCircle className="mr-2 w-4 h-4" />
-                    Show Tutorial Again
-                  </Button>
-                )}
               </div>
             </CardContent>
           </Card>
@@ -258,19 +222,19 @@ export default function Index() {
 
                 {currentLevelData.type === 'scenario' && currentLevelData.id === 'bad' && (
                   <div className="w-full">
-                    <BadServiceScenario />
+                    <BadServiceScenario onNextLevel={handleNextLevel} />
                   </div>
                 )}
 
                 {currentLevelData.type === 'scenario' && currentLevelData.id === 'average' && (
                   <div className="w-full">
-                    <AverageServiceScenario />
+                    <AverageServiceScenario onNextLevel={handleNextLevel} />
                   </div>
                 )}
 
                 {currentLevelData.type === 'scenario' && currentLevelData.id === 'excellent' && (
                   <div className="w-full">
-                    <ExcellentServiceScenario />
+                    <ExcellentServiceScenario onNextLevel={handleNextLevel} />
                   </div>
                 )}
 
@@ -323,26 +287,9 @@ export default function Index() {
                 />
               ))}
             </div>
-
-            <Button
-              onClick={handleNextLevel}
-              disabled={currentLevel === levels.length - 1}
-              className={`bg-gradient-to-r ${currentLevelData.color} text-white hover:scale-105 disabled:opacity-30 transition-all duration-300 animate-breathing`}
-            >
-              {currentLevel === levels.length - 1 ? 'Complete' : 'Next'}
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
           </div>
         </div>
       </main>
-
-      {/* Tutorial Modal */}
-      {showTutorial && (
-        <GameTutorial
-          onComplete={handleTutorialComplete}
-          onClose={() => setShowTutorial(false)}
-        />
-      )}
     </div>
   );
 }

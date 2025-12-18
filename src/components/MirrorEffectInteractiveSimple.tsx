@@ -180,14 +180,14 @@ export default function MirrorEffectInteractive() {
           <div className="text-5xl md:text-6xl mb-3 md:mb-4">
             🎭
           </div>
-          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2">Practice your staff behavior - see how customers react!</p>
+          <p className="text-xs md:text-sm text-gray-700 mb-4 px-2">Practice your partner behavior - see how customers react!</p>
           <Button 
             onClick={handleStart}
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 font-semibold mx-auto"
           >
             😊 Start Practice!
           </Button>
-          <p className="text-xs text-gray-600 mt-2">Choose different staff behaviors and tones</p>
+          <p className="text-xs text-gray-600 mt-2">Choose different partner behaviors and tones</p>
         </div>
       </div>
     );
@@ -213,7 +213,7 @@ export default function MirrorEffectInteractive() {
               <strong>Interactions Tried:</strong> {interactionCount}
             </p>
             <p className="text-sm text-purple-700">
-              You practiced different staff behaviors and saw how they impact customer reactions in real-time.
+              You practiced different partner behaviors and saw how they impact customer reactions in real-time.
             </p>
           </div>
           
@@ -284,7 +284,7 @@ export default function MirrorEffectInteractive() {
         </div>
       </div>
 
-      {/* Staff Behavior Selection */}
+      {/* Partner Behavior Selection */}
       <div className="space-y-4 mb-6">
         {/* Staff Mood Selection */}
         <div className="bg-white/70 rounded-lg p-3 md:p-4 border border-white/50">
