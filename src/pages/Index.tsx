@@ -214,9 +214,13 @@ export default function Index() {
                     <p className="text-lg text-gray-700 leading-relaxed">
                       Learn the difference between bad, average, and excellent service through interactive scenarios.
                     </p>
-                    <div className="bg-white/70 rounded-2xl p-4 backdrop-blur-sm">
-                      <p className="text-gray-800 font-semibold">Ready to become a service expert?</p>
-                    </div>
+                    <Button
+                      onClick={handleNextLevel}
+                      className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-breathing"
+                    >
+                      Ready to become a service expert?
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
                   </div>
                 )}
 
